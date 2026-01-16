@@ -4,10 +4,14 @@ const filesToCache = [
     './index.html',
     './style.css',
     './js/main.js',
-    './images/pwa-icon-192.png'
+    './images/pwa-icon-128.png',
+    './images/pwa-icon-144.png',
+    './images/pwa-icon-152.png',
+    './images/pwa-icon-192.png',
+    './images/pwa-icon-256.png',
+    './images/pwa-icon-512.png'
 ];
 
-// Install Service Worker
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(cacheName).then((cache) => {
@@ -16,35 +20,35 @@ self.addEventListener('install', (event) => {
     );
 });
 
-// Activate & Cleanup old caches
 self.addEventListener('activate', (event) => {
+    const cacheWhitelist = [cacheName];
     event.waitUntil(
-        caches.keys().then((keyList) => {
-            return Promise.all(keyList.map((key) => {
-                if (key !== cacheName) {
-                    return caches.delete(key);
-                }
-            }));
+        caches.keys().then((cacheNames) => {
+            return Promise.all(
+                cacheNames.map((cache) => {
+                    if (!cacheWhitelist.includes(cache)) {
+                        return caches.delete(cache);
+                    }
+                })
+            );
         })
     );
 });
 
-// Fetch & Dynamic Caching
+// Dynamic caching with offline fallback (per lab step 7 & 9)
 self.addEventListener('fetch', (event) => {
     event.respondWith(
         caches.match(event.request).then((response) => {
-            // Return cached version or fetch new
             return response || fetch(event.request).then((fetchResponse) => {
-                return caches.open(cacheName).then((cache) => {
-                    // Cache new files dynamically only if valid
-                    if(event.request.method === 'GET') {
-                         cache.put(event.request, fetchResponse.clone());
-                    }
-                    return fetchResponse;
-                });
+                if (event.request.method === 'GET') {
+                    return caches.open(cacheName).then((cache) => {
+                        cache.put(event.request, fetchResponse.clone());
+                        return fetchResponse;
+                    });
+                }
+                return fetchResponse;
             });
         }).catch(() => {
-            // Fallback for offline navigation
             if (event.request.mode === 'navigate') {
                 return caches.match('./index.html');
             }

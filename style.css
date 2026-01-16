@@ -18,14 +18,26 @@ html, body {
 
 header {
     margin-bottom: 2rem;
-    animation: fadeIn 1s ease-in-out;
 }
 
+/* Title animation per lab step 10 */
 .title {
     font-size: 3rem;
     color: #db4938;
     margin-bottom: 0.5rem;
     font-weight: 600;
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .subtitle {
@@ -33,7 +45,6 @@ header {
     color: #666;
 }
 
-/* Сітка галереї */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -56,7 +67,6 @@ header {
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
-/* Кнопка */
 button {
     padding: 15px 30px;
     font-size: 1.1rem;
@@ -73,9 +83,4 @@ button {
 button:hover {
     background-color: #c53727;
     transform: scale(1.05);
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
 }
