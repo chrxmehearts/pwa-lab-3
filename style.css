@@ -1,38 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
 html, body {
-    font-family: sans-serif;
+    font-family: 'Poppins', sans-serif;
     text-align: center;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #f8f9fa;
+    color: #333;
+    min-height: 100vh;
 }
 
 .container {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
+}
+
+header {
+    margin-bottom: 2rem;
+    animation: fadeIn 1s ease-in-out;
 }
 
 .title {
     font-size: 3rem;
     color: #db4938;
-    animation: fadeIn 2s ease-in-out;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
 }
 
-img {
-    border-radius: 10px;
-    margin: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-button {
-    padding: 10px 20px;
+.subtitle {
     font-size: 1.2rem;
+    color: #666;
+}
+
+/* Сітка галереї */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.gallery-item {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* Кнопка */
+button {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
     background-color: #db4938;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 50px;
     cursor: pointer;
-    margin-top: 20px;
+    box-shadow: 0 4px 10px rgba(219, 73, 56, 0.3);
+    transition: background 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #c53727;
+    transform: scale(1.05);
 }
 
 @keyframes fadeIn {

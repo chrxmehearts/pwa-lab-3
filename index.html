@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PWA Lab 3</title>
+    <title>Cat PWA</title>
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="style.css">
     
@@ -14,13 +14,21 @@
 </head>
 <body>
     <div class="container">
+        <header>
+            <h1 class="title">Funny Cats PWA</h1>
+            <p class="subtitle">Your offline-ready cat gallery</p>
+        </header>
+
         <main>
-            <h1 class="title">Awesome PWA!</h1>
-            <p>This application works offline.</p>
-            <div class="gallery">
-                <img src="https://placekitten.com/300/300" alt="Cat 1">
-                <img src="https://placekitten.com/301/301" alt="Cat 2">
+            <div class="gallery-grid">
+                <img src="https://picsum.photos/id/40/400/300" class="gallery-item" alt="Cat 1">
+                <img src="https://picsum.photos/id/219/400/300" class="gallery-item" alt="Cat 2">
+                <img src="https://picsum.photos/id/433/400/300" class="gallery-item" alt="Bear (Honorary Cat)">
+                <img src="https://picsum.photos/id/582/400/300" class="gallery-item" alt="Wolf (Big Cat)">
+                <img src="https://picsum.photos/id/593/400/300" class="gallery-item" alt="Tiger">
+                <img src="https://picsum.photos/id/659/400/300" class="gallery-item" alt="Husky">
             </div>
+            
             <button id="notify-btn">Enable Notifications</button>
         </main>
     </div>
