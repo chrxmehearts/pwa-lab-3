@@ -36,7 +36,7 @@ self.addEventListener('fetch', (event) => {
             // Return cached version or fetch new
             return response || fetch(event.request).then((fetchResponse) => {
                 return caches.open(cacheName).then((cache) => {
-                    // Cache new files dynamically
+                    // Cache new files dynamically only if valid
                     if(event.request.method === 'GET') {
                          cache.put(event.request, fetchResponse.clone());
                     }
@@ -44,7 +44,7 @@ self.addEventListener('fetch', (event) => {
                 });
             });
         }).catch(() => {
-            // Fallback for offline
+            // Fallback for offline navigation
             if (event.request.mode === 'navigate') {
                 return caches.match('./index.html');
             }
