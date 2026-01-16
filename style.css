@@ -20,7 +20,6 @@ header {
     margin-bottom: 2rem;
 }
 
-/* Title animation per lab step 10 */
 .title {
     font-size: 3rem;
     color: #db4938;
@@ -65,22 +64,4 @@ header {
 .gallery-item:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-
-button {
-    padding: 15px 30px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    background-color: #db4938;
-    color: white;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(219, 73, 56, 0.3);
-    transition: background 0.3s, transform 0.2s;
-}
-
-button:hover {
-    background-color: #c53727;
-    transform: scale(1.05);
 }
